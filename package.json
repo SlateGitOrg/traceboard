@@ -1,0 +1,12 @@
+{
+  "name": "traceboard",
+  "version": "0.1.0",
+  "description": "Requirements traceability that detects stale coverage - a test that passes against a requirement which has since changed.",
+  "type": "module",
+  "private": true,
+  "engines": { "node": ">=22.6" },
+  "scripts": {
+    "test": "node --test",
+    "demo": "node src/demo.ts"
+  }
+}
