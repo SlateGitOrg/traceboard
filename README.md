@@ -2,6 +2,22 @@
 
 > Requirements traceability that detects stale coverage - a test that passes against a requirement which has since changed.
 
+## Live deployment
+
+[![CI and deployment](https://github.com/SlateGitOrg/traceboard/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/SlateGitOrg/traceboard/actions/workflows/ci.yml)
+
+[Open the interactive Traceboard demo](https://slategitorg.github.io/traceboard/)
+
+The deployed interface uses a deterministic offline scenario to make the repository's tested decision rule visible without external services or private data.
+
+### Desktop
+
+![Traceboard desktop deployment](docs/assets/deployed-desktop.png)
+
+### Mobile
+
+<img src="docs/assets/deployed-mobile.png" alt="Traceboard mobile deployment" width="390">
+
 `FLAGSHIP` · **Business Analyst** · Advanced · ~4 weeks · Healthcare software under regulatory audit
 
 **Primary language:** TypeScript
