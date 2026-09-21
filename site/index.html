@@ -1,1 +1,36 @@
-<!doctype html><html lang="en" class="workflow-board"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Find tests that still pass against requirements that have changed."><meta name="theme-color" content="#f4f4f0"><title>Traceboard — Live demo</title><link rel="stylesheet" href="./styles.css"></head><body><div class="shell"><nav class="topbar" aria-label="Primary"><a class="brand" href="./"><span class="brand-mark">S</span>Traceboard</a><a class="repo-link" href="https://github.com/SlateGitOrg/traceboard">View source on GitHub</a></nav><main><header class="hero"><div><p class="kicker">Requirements assurance</p><h1>Find tests that still pass against requirements that have changed.</h1></div><div class="hero-side"><p>This interactive browser scenario makes the repository's tested decision rule visible. Adjust the operating condition and inspect what changes.</p><div class="status" role="status"><span class="status-dot" aria-hidden="true"></span>Release attention</div></div></header><section class="visual" aria-label="Interactive project view"><div class="workflow" aria-label="Requirements assurance workflow"><button type="button" class="stage " data-stage="0"><span class="stage-number">1</span><span><strong>Requirement</strong><small>8 items</small></span></button><span class="connector" aria-hidden="true"></span><button type="button" class="stage active" data-stage="1"><span class="stage-number">2</span><span><strong>Implementation</strong><small>3 items</small></span></button><span class="connector" aria-hidden="true"></span><button type="button" class="stage " data-stage="2"><span class="stage-number">3</span><span><strong>Test evidence</strong><small>1 items</small></span></button><span class="connector" aria-hidden="true"></span><button type="button" class="stage " data-stage="3"><span class="stage-number">4</span><span><strong>Release</strong><small>0 items</small></span></button><div class="activity"><span class="activity-dot"></span><p><strong>Latest decision</strong><br><span id="activity-copy">Evidence accepted and moved forward.</span></p><time>Just now</time></div></div></section><aside class="panel"><div class="metric"><strong id="primary-metric" aria-live="polite">4</strong><span>stale coverage links</span></div><div class="control"><label for="scenario-range"><span>Freshness window</span><output id="scenario-output" for="scenario-range">21 days</output></label><input id="scenario-range" type="range" min="1" max="90" value="21" aria-label="Freshness window"></div><div class="facts"><div class="fact"><strong>86%</strong><span>fresh coverage</span></div><div class="fact"><strong>124</strong><span>requirements</span></div><div class="fact"><strong>9</strong><span>changed this sprint</span></div></div></aside><footer class="demo-note"><p>Representative offline scenario. The repository's native test suite verifies the core behavior; this page visualizes its decision path without external services or private data.</p><a href="https://github.com/SlateGitOrg/traceboard#readme">Read the engineering case study</a></footer></main></div><script src="./app.js"></script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Version requirements, inspect linked tests, and detect coverage that became stale after an amendment.">
+  <title>Traceboard · Working Lab</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#results">Skip to results</a>
+  <header class="masthead"><a class="brand" href="https://github.com/SlateGitOrg/traceboard">Traceboard</a><span class="build-state"><i></i> live computation</span></header>
+  <main>
+    <section class="intro">
+      <p class="eyebrow">Requirements assurance</p>
+      <h1>Run the decision,<br><em>inspect the evidence.</em></h1>
+      <p class="lede">Version requirements, inspect linked tests, and detect coverage that became stale after an amendment.</p>
+    </section>
+    <section class="workspace" aria-label="Interactive project workspace">
+      <form id="workspace-form" class="control-panel">
+        <div class="panel-heading"><span>01</span><div><p>Inputs</p><h2>Configure the run</h2></div></div>
+        <div class="fields"><label class="field" for="requirements"><span>Requirements as JSON</span><textarea id="requirements" name="requirements" rows="9">[{&quot;ref&quot;:&quot;PAY-01&quot;,&quot;version&quot;:3,&quot;text&quot;:&quot;Payment retries stop after three attempts&quot;},{&quot;ref&quot;:&quot;AUTH-02&quot;,&quot;version&quot;:1,&quot;text&quot;:&quot;Sessions expire after 30 minutes&quot;}]</textarea></label>
+<label class="field" for="tests"><span>Tests and links as JSON</span><textarea id="tests" name="tests" rows="10">[{&quot;name&quot;:&quot;payment retry test&quot;,&quot;ref&quot;:&quot;PAY-01&quot;,&quot;linkedVersion&quot;:2,&quot;status&quot;:&quot;pass&quot;},{&quot;name&quot;:&quot;session expiry test&quot;,&quot;ref&quot;:&quot;AUTH-02&quot;,&quot;linkedVersion&quot;:1,&quot;status&quot;:&quot;pass&quot;}]</textarea></label>
+<label class="field" for="changedRef"><span>Requirement to inspect</span><textarea id="changedRef" name="changedRef" rows="2">PAY-01</textarea></label></div>
+        <div class="actions"><button class="run" type="submit">Run analysis <span>→</span></button><button id="reset-button" class="reset" type="button">Reset</button></div>
+      </form>
+      <section id="results" class="result-panel" aria-live="polite" aria-busy="true">
+        <div class="panel-heading"><span>02</span><div><p>Output</p><h2>Decision trace</h2></div></div>
+        <div id="result-content" class="result-content"><div class="loading">Computing initial scenario…</div></div>
+      </section>
+    </section>
+  </main>
+  <footer><p>Built from the tested logic in <a href="https://github.com/SlateGitOrg/traceboard">SlateGitOrg/traceboard</a>.</p><p>Interactive capstone · Sneha Chandra</p></footer>
+  <script type="module" src="app.mjs"></script>
+</body>
+</html>
