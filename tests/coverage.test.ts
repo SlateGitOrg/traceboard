@@ -18,7 +18,7 @@ describe('detection against planted ground truth', () => {
     db.close();
   });
 
-  test('THE DIFFERENTIATOR: every planted STALE_COVERED requirement is found', () => {
+  test('every planted STALE_COVERED requirement is found', () => {
     const db = buildFixture();
     const stale = coverageReport(db)
       .filter((r) => r.state === 'STALE_COVERED').map((r) => r.ref).sort();
@@ -26,7 +26,7 @@ describe('detection against planted ground truth', () => {
     db.close();
   });
 
-  test('every planted orphaned TEST is found - the other direction', () => {
+  test('every planted orphaned TEST is found', () => {
     const db = buildFixture();
     assert.deepEqual(
       orphanedTests(db).map((t) => t.id).sort(),
@@ -101,7 +101,7 @@ describe('amendment behaviour', () => {
     db.close();
   });
 
-  test('requirement versions are IMMUTABLE, enforced by the database', () => {
+  test('requirement versions are immutable, enforced by the database', () => {
     // This is what makes stale coverage representable at all. If a version
     // can be edited in place, there is no earlier version to compare against.
     const db = buildFixture();

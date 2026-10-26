@@ -45,7 +45,7 @@ npm test        # unit tests, including the planted-defect suite
 npm run demo    # coverage report and an audit pack
 ```
 
-On Node 22.6 to 22.17, add `--experimental-strip-types` (for example `node --experimental-strip-types src/demo.ts`).
+On Node 22.6 to 22.17, add `--experimental-strip-types`: `node --experimental-strip-types src/demo.ts` for the demo, and `node --experimental-strip-types --test` instead of `npm test` (plain `npm test` would run only the site tests there).
 
 ## Example
 

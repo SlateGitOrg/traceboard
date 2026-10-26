@@ -1,19 +1,16 @@
 import { DatabaseSync } from 'node:sqlite';
 
 /**
- * Requirements traceability with VERSIONED requirements.
+ * Requirements traceability with versioned requirements.
  *
- * THE DIFFERENTIATOR LIVES HERE.
+ * A traceability matrix built as a spreadsheet reports full coverage on the
+ * day it is built and drifts out of date as requirements are amended: the
+ * linked test stays green but is now exercising the old wording.
  *
- * A traceability matrix is a spreadsheet. It reports 100% coverage on the day
- * it is built and is quietly wrong within a month, because a requirement gets
- * amended and the test that "covers" it is still green - it is now testing the
- * old wording.
- *
- * That state has a name here: STALE-COVERED. It is only representable because
- * a requirement is an immutable version, not a mutable row. If you model a
- * requirement as a row you update in place, stale coverage is undetectable and
- * this whole project has no differentiator.
+ * That state is called STALE-COVERED here. It is only representable because
+ * a requirement is an immutable version rather than a mutable row. If a
+ * requirement were a row updated in place, there would be nothing to compare
+ * a test's linked version against, and stale coverage could not be detected.
  */
 
 export function createDatabase(): DatabaseSync {
